@@ -6,6 +6,8 @@
 // @author       /u/eighthmoon (credit to /u/keythkatz for original Robin Autovoter)
 // @match        https://www.reddit.com/robin*
 // @grant        none
+// @updateURL	 https://gist.githubusercontent.com/4U6U57/0037f663f8839b4fe7180dcd2620143e/raw/redrobins.propaganda.user.js
+// @downloadURL	 https://gist.githubusercontent.com/4U6U57/0037f663f8839b4fe7180dcd2620143e/raw/redrobins.propaganda.user.js
 // ==/UserScript==
 /* jshint -W097 */
 
