@@ -117,6 +117,7 @@ function main(){
 			if(prefix.length > 0) message = prefix + " " + message;
 			sendMessage(message);
 			msgDelay = randomInt(2 * msgAverageDelay);
+			msgDelay -= msgDelay % mainDelay; // Need to round
 			logger("next: " + printTime(msgDelay));
 		}
 
