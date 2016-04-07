@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         redrobins.propaganda
 // @namespace    http://reddit.com/r/RedRobins
-// @version      04.07.6
+// @version      04.07.7
 // @description  Red Robin Propaganda Bot
 // @author       /u/eighthmoon (credit to /u/keythkatz for original Robin Autovoter)
 // @match        https://www.reddit.com/robin*
@@ -19,7 +19,7 @@ RED ROBINS) intact. Thank you, and welcome to the botnet Comrade.
  RED ROBINS*/
 
 // ALL CUSTOMIZATION FEATURES BELOW
-var VERSION = "04.07.6";
+var VERSION = "04.07.7";
 var TAG = "redrobins"; // You can filter messages in the developer console
 var time = 0; // The time for Communist Revolution is now
 var mainDelay = inSeconds(5); // Do not change or Marx will die
@@ -63,17 +63,11 @@ function inMinutes(time){
 function inHours(time){
 	return inMinutes(time) * 60;
 }
-function currentSeconds(){ // ms conversion, converts ms to units
-	return time / 1000;
-}
-function currentMinutes(){
-	return currentSeconds() / 60;
-}
-function currentHours(){
-	return currentMinutes() / 60;
-}
 function currentTime(){ // returns current elapsed in HH:MM:SS
-	var seconds = time / 1000;
+	return printTime(time);
+}
+function printTime(duration){
+	var seconds = duration / 1000;
 	var hours = parseInt( seconds / 3600 );
 	seconds = seconds % 3600;
 	var minutes = parseInt( seconds / 60 );
@@ -123,6 +117,7 @@ function main(){
 			if(prefix.length > 0) message = prefix + " " + message;
 			sendMessage(message);
 			msgDelay = randomInt(2 * msgAverageDelay);
+			logger("next: " + printTime(msgDelay));
 		}
 
 		// Continue
