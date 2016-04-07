@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         redrobins.propaganda
 // @namespace    http://reddit.com/r/RedRobins
-// @version      04.07.8
+// @version      04.07.9
 // @description  Red Robin Propaganda Bot
 // @author       /u/eighthmoon (credit to /u/keythkatz for original Robin Autovoter)
 // @match        https://www.reddit.com/robin*
@@ -19,7 +19,7 @@ RED ROBINS) intact. Thank you, and welcome to the botnet Comrade.
  RED ROBINS*/
 
 // ALL CUSTOMIZATION FEATURES BELOW
-var VERSION = "04.07.8";
+var VERSION = "04.07.9";
 var TAG = "redrobins"; // You can filter messages in the developer console
 var time = 0; // The time for Communist Revolution is now
 var mainDelay = inSeconds(5); // Do not change or Marx will die
@@ -45,7 +45,7 @@ var messages = [
 	"Distribute the banana facts to the working class! Join the Party! http://reddit.com/r/RedRobins",
 	"Growth is capitalism. Staying is consenting to injustice. Overthrow the broken system! http://reddit.com/r/RedRobins"
 ];
-var channels = ["+", "*", "#gov", "^", "$", "<>", ""];
+var channels = ["+", "*", "#gov", "^", "$", "<>", "<3", "&", ""];
 var prefix = "/me";
 
 function randomInt(max) { // returns random element from 0 to max - 1
