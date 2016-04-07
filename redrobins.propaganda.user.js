@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         redrobins.propaganda
 // @namespace    http://reddit.com/r/RedRobins
-// @version      04.07.5
+// @version      04.07.6
 // @description  Red Robin Propaganda Bot
 // @author       /u/eighthmoon (credit to /u/keythkatz for original Robin Autovoter)
 // @match        https://www.reddit.com/robin*
@@ -19,11 +19,11 @@ RED ROBINS) intact. Thank you, and welcome to the botnet Comrade.
  RED ROBINS*/
 
 // ALL CUSTOMIZATION FEATURES BELOW
-var VERSION = "04.07.5";
+var VERSION = "04.07.6";
 var TAG = "redrobins"; // You can filter messages in the developer console
 var time = 0; // The time for Communist Revolution is now
 var mainDelay = inSeconds(5); // Do not change or Marx will die
-var msgDelay = 0; // Randomly generated, starts at 0 to print immediately
+var msgDelay = 1; // Randomly generated, starts at 0 to print immediately
 var msgAverageDelay = inMinutes(10); // Average amount of delay between posts, actual delay random betwen 0 and 2*average
 var reloadDelay = inHours(1); // Amount of tie before resetting
 // Feel free to change Minutes into Seconds (must be divisible by mainDelay) or Hours, and change the quantity
