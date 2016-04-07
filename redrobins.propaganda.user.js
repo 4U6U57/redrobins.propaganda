@@ -21,7 +21,7 @@ var VERSION = "04.05.2";
 var TAG = "redrobins"; // You can filter messages in the developer console
 var time = 0; // The time for Communist Revolution is now
 var mainDelay = inSeconds(5); // Do not change or Marx will die
-var msgDelay = inMinutes(4); // Amount of time between messages
+var msgDelay = inMinutes(5); // Amount of time between messages
 // Feel free to change Minutes into Seconds (must be divisible by mainDelay) or Hours, and change the quantity
 
 // Below is array of messages, feel free to modify/change the number of them (surrounded by quotes, separated by commas)
