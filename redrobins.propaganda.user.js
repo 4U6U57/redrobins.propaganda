@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         redrobins.propaganda
 // @namespace    http://reddit.com/r/RedRobins
-// @version      04.07.3
+// @version      04.07.4
 // @description  Red Robin Propaganda Bot
 // @author       /u/eighthmoon (credit to /u/keythkatz for original Robin Autovoter)
 // @match        https://www.reddit.com/robin*
@@ -19,11 +19,13 @@ RED ROBINS) intact. Thank you, and welcome to the botnet Comrade.
  RED ROBINS*/
 
 // ALL CUSTOMIZATION FEATURES BELOW
-var VERSION = "04.07.3";
+var VERSION = "04.07.4";
 var TAG = "redrobins"; // You can filter messages in the developer console
 var time = 0; // The time for Communist Revolution is now
 var mainDelay = inSeconds(5); // Do not change or Marx will die
-var msgDelay = inMinutes(5); // Amount of time between messages
+var msgDelay = 0; // Randomly generated, starts at 0 to print immediately
+var msgAverageDelay = inMinutes(10); // Average amount of delay between posts, actual delay random betwen 0 and 2*average
+var reloadDelay = inHours(1); // Amount of tie before resetting
 // Feel free to change Minutes into Seconds (must be divisible by mainDelay) or Hours, and change the quantity
 
 // Below is array of messages, feel free to modify/change the number of them (surrounded by quotes, separated by commas)
@@ -43,16 +45,16 @@ var messages = [
 	"Distribute the banana facts to the working class! Join the Party! http://reddit.com/r/RedRobins",
 	"Growth is capitalism. Staying is consenting to injustice. Overthrow the broken system! http://reddit.com/r/RedRobins"
 ];
-var channels = ["-", "*", "$", ".", ">", ""];
+var channels = ["+", "*", "#gov", "^", "$", "<>", ""];
 var prefix = "/me";
 
-function randomInt() {
-	return Math.floor(Math.random() * 100);
+function randomInt(max) { // returns random element from 0 to max - 1
+	return Math.floor(Math.random() * max);
 }
-function randomFrom(array) {
-	return array[randomInt() % array.length];
+function randomFrom(array) { // returns random element from array
+	return array[randomInt(array.length)];
 }
-function inSeconds(time){
+function inSeconds(time){ // time conversion function, converts units to ms
 	return time * 1000;
 }
 function inMinutes(time){
@@ -61,7 +63,7 @@ function inMinutes(time){
 function inHours(time){
 	return inMinutes(time) * 60;
 }
-function currentSeconds(){
+function currentSeconds(){ // ms conversion, converts ms to units
 	return time / 1000;
 }
 function currentMinutes(){
@@ -70,7 +72,7 @@ function currentMinutes(){
 function currentHours(){
 	return currentMinutes() / 60;
 }
-function currentTime(){
+function currentTime(){ // returns current elapsed in HH:MM:SS
 	var seconds = time / 1000;
 	var hours = parseInt( seconds / 3600 );
 	seconds = seconds % 3600;
@@ -78,8 +80,8 @@ function currentTime(){
 	seconds = seconds % 60;
 	return hours + ":" + minutes + ":" + seconds;
 }
-function intervalOf(denominator){
-	return time % denominator === 0;
+function intervalOf(duration){ // returns if current time is interval of duration
+	return time % duration === 0;
 }
 function logger(msg){
 	console.log(TAG + " (" + VERSION + ") : " + msg);
@@ -120,6 +122,7 @@ function main(){
 			if(channels.length > 0) message = randomFrom(channels) + " " + message;
 			if(prefix.length > 0) message = prefix + " " + message;
 			sendMessage(message);
+			msgDelay = randomInt(2 * msgAverageDelay);
 		}
 
 		// Continue
@@ -130,4 +133,4 @@ function main(){
 main();
 setTimeout(function(){
 	window.location.reload();
-}, inHours(1));
+}, reloadDelay;
